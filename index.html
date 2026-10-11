@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0D0B1A">
+
+    <title>Vanshika Gupta | Portfolio</title>
+
+    <meta name="description"
+          content="Vanshika Gupta's personal portfolio showcasing Python, SQL, data analysis skills and projects.">
+
+    <!-- Social sharing preview -->
+    <meta property="og:title" content="Vanshika Gupta | Portfolio">
+    <meta property="og:description" content="B.Tech student learning Python, SQL and data analysis. See my projects.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon (emoji, no extra file needed) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>V</text></svg>">
+
+    <style>
+        /* ===== GENERAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0D0B1A;
+            --card: #17132B;
+            --text: #F5F3FF;
+            --muted: #B8B1D0;
+            --accent: #B9A0FF;
+            --border: #352B50;
+            --tag-bg: #2A2145;
+            --on-accent: #120C26;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Visible keyboard focus */
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 85px 0;
+            scroll-margin-top: 85px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(13, 11, 26, 0.95);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav ul a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 70px 0;
+        }
+
+        .hero-content {
+            max-width: 780px;
+        }
+
+        /* PROFILE PHOTO */
+        .profile-photo {
+            width: 155px;
+            height: 155px;
+            margin-bottom: 25px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #B9A0FF, #FF8FCF);
+            box-shadow: 0 0 30px rgba(185, 160, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--background);
+        }
+
+        /* Shown only if vanshika.jpg is missing */
+        .profile-photo .photo-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--background);
+            background: var(--card);
+            color: var(--accent);
+            font-size: 3rem;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-photo.no-photo img {
+            display: none;
+        }
+
+        .profile-photo.no-photo .photo-fallback {
+            display: flex;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        .hero h2 {
+            color: var(--muted);
+            font-size: clamp(1.2rem, 3vw, 1.7rem);
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--on-accent);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: var(--card);
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .info-card p {
+            margin-bottom: 10px;
+            color: var(--muted);
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .project-card h3 {
+            margin: 12px 0;
+            font-size: 1.35rem;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tags span {
+            background: var(--tag-bg);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .project-link {
+            color: var(--accent);
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== EDUCATION SECTION ===== */
+        .education-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-card {
+            padding: 25px;
+            border-left: 3px solid var(--accent);
+            background: var(--card);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .education-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 15px auto 25px;
+            max-width: 600px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 0;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            nav ul {
+                gap: 12px 18px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
+            }
+
+            .about-grid,
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+                scroll-margin-top: 130px; /* nav is taller on mobile */
+            }
+
+            .contact-box {
+                padding: 25px 18px;
+            }
+        }
+
+        /* Respect users who prefer less motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container" aria-label="Main navigation">
+            <a href="#home" class="logo">
+                Vanshika<span class="highlight">.</span>
+            </a>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section class="hero container" id="home">
+            <div class="hero-content">
+
+                <div class="profile-photo" id="profilePhoto">
+                    <img src="vanshika.jpg"
+                         alt="Portrait of Vanshika Gupta"
+                         onerror="document.getElementById('profilePhoto').classList.add('no-photo')">
+                    <div class="photo-fallback" aria-hidden="true">VG</div>
+                </div>
+
+                <span class="eyebrow">Welcome to my portfolio</span>
+
+                <h1>
+                    Hi, I'm <span class="highlight">Vanshika Gupta.</span>
+                </h1>
+
+                <h2>Aspiring Data Analyst | Python &amp; SQL Learner</h2>
+
+                <p>
+                    I'm a B.Tech student passionate about programming,
+                    data analysis, and solving problems through technology.
+                </p>
+
+                <div class="buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        Explore My Projects
+                    </a>
+
+                    <a href="resume.pdf" class="btn" download>
+                        Download Resume ↓
+                    </a>
+
+                    <a href="#contact" class="btn">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title">
+                    About <span class="highlight">Me</span>
+                </h2>
+
+                <p class="section-subtitle">
+                    A little about my journey and interests.
+                </p>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I am currently pursuing a Bachelor of Technology
+                            and developing my skills in programming and
+                            data-related technologies.
+                        </p>
+
+                        <p>
+                            My learning journey includes Python, SQL,
+                            data structures, and data analysis libraries
+                            such as NumPy, Pandas, and Matplotlib.
+                        </p>
+
+                        <p>
+                            I believe in learning by doing. My goal is to
+                            strengthen my fundamentals, improve my
+                            problem-solving skills, and build projects
+                            that demonstrate what I can do.
+                        </p>
+
+                        <p>
+                            I am always open to learning opportunities,
+                            internships, and collaborations that help me
+                            grow as a technology professional.
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Quick Overview</h3>
+                        <p><strong>Name:</strong> Vanshika Gupta</p>
+                        <p><strong>Degree:</strong> B.Tech</p>
+                        <p><strong>College:</strong> Eshan College of Engineering</p>
+                        <p><strong>University:</strong> AKTU</p>
+                        <p><strong>Expected Graduation:</strong> 2028</p>
+                        <p><strong>Interests:</strong> Data Science, Python, SQL</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="container">
+                <h2 class="section-title">
+                    My <span class="highlight">Skills</span>
+                </h2>
+
+                <p class="section-subtitle">
+                    Technologies and tools I am learning and using.
+                </p>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Programming</h3>
+                        <p>
+                            Python, SQL, HTML and CSS.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Data &amp; Analytics</h3>
+                        <p>
+                            Pandas, NumPy, Matplotlib, Seaborn,
+                            machine learning basics and foundational
+                            data analysis.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Developer Tools</h3>
+                        <p>
+                            Visual Studio Code, Git,
+                            GitHub, Canva and Excel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <div class="container">
+                <h2 class="section-title">
+                    My <span class="highlight">Projects</span>
+                </h2>
+
+                <p class="section-subtitle">
+                    A selection of my coding practice and work.
+                </p>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <span class="project-number">PROJECT 01</span>
+
+                        <h3>AI Resume Copilot</h3>
+
+                        <p>
+                            An AI-powered resume assistant designed to help users
+                            improve their resumes, refine professional summaries,
+                            and tailor their skills and experience to job descriptions.
+                            This project focuses on exploring AI-powered career tools
+                            and building practical solutions for job seekers.
+                        </p>
+
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>Artificial Intelligence</span>
+                            <span>Resume Analysis</span>
+                        </div>
+
+                        <a
+                            href="https://github.com/vanshhiiikaa/AI-Resume-Copilot"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                            aria-label="View AI Resume Copilot on GitHub (opens in new tab)">
+                            View on GitHub ↗
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <span class="project-number">PROJECT 02</span>
+
+                        <h3>AI Skin Specialist</h3>
+
+                        <p>
+                            An AI-powered skin health assistant designed to help
+                            users understand common skin concerns by analyzing
+                            their symptoms and providing general skincare
+                            information. The project explores AI-based skin
+                            health assistance and personalized skincare guidance.
+                        </p>
+
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>Artificial Intelligence</span>
+                            <span>Healthcare Technology</span>
+                            <span>Skin Health</span>
+                        </div>
+
+                        <a
+                            href="https://github.com/vanshhiiikaa/AI-Skin-Specialist"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                            aria-label="View AI Skin Specialist on GitHub (opens in new tab)">
+                            View on GitHub ↗
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section" id="education">
+            <div class="container">
+                <h2 class="section-title">
+                    My <span class="highlight">Education</span>
+                </h2>
+
+                <p class="section-subtitle">
+                    My academic journey and educational background.
+                </p>
+
+                <div class="education-list">
+                    <div class="education-card">
+                        <h3>Bachelor of Technology (B.Tech)</h3>
+                        <p>Eshan College of Engineering</p>
+                        <p>Dr. A.P.J. Abdul Kalam Technical University (AKTU)</p>
+                        <p>Expected Graduation: 2028</p>
+                    </div>
+
+                    <div class="education-card">
+                        <h3>Class XII (Senior Secondary)</h3>
+                        <p>ESS ESS Convent Senior Secondary School</p>
+                        <p>Board: CBSE</p>
+                        <p>Duration: 2022 – 2024</p>
+                    </div>
+
+                    <div class="education-card">
+                        <h3>Class X (Secondary School)</h3>
+                        <p>St. George's School</p>
+                        <p>Board: ICSE</p>
+                        <p>Completed: 2022</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <h2 class="section-title">
+                        Let's <span class="highlight">Connect</span>
+                    </h2>
+
+                    <p>
+                        I am interested in learning opportunities,
+                        internships, and collaborations. Feel free to
+                        connect with me or explore my work.
+                    </p>
+
+                    <div class="social-links">
+                        <a
+                            href="https://github.com/vanshhiiikaa"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/vanshhiiikaa"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            LinkedIn ↗
+                        </a>
+
+                        <a href="mailto:vanshhiiikaa@gmail.com">
+                            Email Me ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 Vanshika Gupta. Built with HTML &amp; CSS.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
